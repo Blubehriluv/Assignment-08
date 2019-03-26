@@ -1,0 +1,6 @@
+﻿  Source.cpp
+c1xx : warning C4199: two-phase name lookup is not supported for C++/CLI, C++/CX, or OpenMP; use /Zc:twoPhase-
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+c1xx : warning C4199: two-phase name lookup is not supported for C++/CLI, C++/CX, or OpenMP; use /Zc:twoPhase-
+  Source.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Interactive Fiction.vcxproj -> C:\Users\taymcken\Documents\GitHub\Assignment-08\Assignment 08\Debug\Interactive Fiction.exe
