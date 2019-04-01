@@ -16,6 +16,11 @@ bool hasKeys = false;
 // Color References
 // 0C = Red on Black,  0F = White on Black
 void beginning();
+void goSleep();
+void getKeys();
+void getDoor();
+void standUp();
+
 
 void dead() {
 	system("Color 0C");
@@ -80,6 +85,9 @@ void getKeys() {
 		}
 		if (playerInput == "sleep" || playerInput == "Sleep") {
 			goSleep();
+		}
+		else {
+			cout << "u suc" << endl;
 		}
 	}
 }
@@ -247,7 +255,7 @@ int main()
 	while (hello[x] != '\0')
 	{
 		cout << hello[x];
-		Sleep(150);
+		Sleep(700);
 		x++;
 	};
 	cout << "\n\n\n";
