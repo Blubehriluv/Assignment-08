@@ -10,6 +10,7 @@ string playerInput;
 bool startRoom = false;
 bool hallway = false;
 bool hasLook = false;
+bool isStanding = false;
 
 // Color References
 // 0C = Red on Black,  0F = White on Black
@@ -48,15 +49,22 @@ void goSleep() {
 }
 
 void lookAround() {
-	if (startRoom == true) {
-		cout << "this";
+	cout << "\n\n\n";
+	cout << "You look at the furniture that surrounds you." << endl;
+	cout << "There are keys on the table. They look like yours." << endl;
+	cout << "The front door is up ahead." << endl;
+	
+	if (isStanding == true) {
+		cout << "Actions: "
 	}
-	if (hallway == true) {
-		cout << "this";
+
+	if (isStanding == false) {
+		cout << "Actions: Door, Keys, Stand, Sleep" << endl;
 	}
 }
 
 void standUp() {
+	isStanding = true;
 	cout << "Stretching out your legs, you slowly rise to your feet." << endl;
 	cout << "You may have done so too quickly, you feel a little dizzy." << endl;
 	cout << "The sensation quickly passes." << endl;
@@ -67,7 +75,6 @@ void standUp() {
 		cin >> playerInput;
 		
 		if (playerInput == "look" || playerInput == "Look") {
-			cout << "\n\n\n";
 			lookAround();
 		}
 		if (playerInput == "sleep" || playerInput == "Sleep") {
@@ -78,12 +85,15 @@ void standUp() {
 
 	if (hasLook == true) {
 		cout << "Actions: Keys, Door, Sleep" << endl;
-		system("Pause");
+		cin >> playerInput;
+		if (playerInput == ) {
+
+		}
 	}
 }
 
 void beginning() {
-	startRoom = true;
+	//startRoom = true;
 	cout << "You wake up in what seems to be a regular old house." << endl;
 	cout << "But it isn't your house...\n\n" << endl;
 	system("Pause");
