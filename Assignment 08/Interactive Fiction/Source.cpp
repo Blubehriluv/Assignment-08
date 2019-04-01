@@ -11,6 +11,7 @@ bool startRoom = false;
 bool hallway = false;
 bool hasLook = false;
 bool isStanding = false;
+bool hasKeys = false;
 
 // Color References
 // 0C = Red on Black,  0F = White on Black
@@ -36,7 +37,7 @@ void dead() {
 	if (playerInput == "n" || playerInput == "N" || playerInput == "no" || playerInput == "No") {
 		return;
 	}
-	
+
 	beginning();
 }
 
@@ -48,18 +49,122 @@ void goSleep() {
 	dead();
 }
 
+void getKeys() {
+	if (isStanding == false) {
+		cout << "You may want to get up off the floor first." << endl;
+		cout << "\n\n\n";
+		cout << "Actions: Stand, Door, Sleep" << endl;
+		cin >> playerInput;
+		cout << "\n\n\n";
+
+		if (playerInput == "stand" || playerInput == "Stand") {
+			standUp();
+		}
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
+		}
+	}
+	if (isStanding == true) {
+		hasKeys = true;
+		cout << "You take the keys, shoving them into your coat pocket." << endl;
+		cout << "The familiar action gives you comfort." << endl;
+		cout << "\n\n\n";
+		cout << "Actions: Door, Sleep" << endl;
+		cin >> playerInput;
+
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
+		}
+	}
+}
+
+void getDoor() {
+	if (isStanding == false) {
+		cout << "You should get up off the floor." << endl;
+		cout << "\n\n\n";
+		cout << "Actions: Stand, Door, Keys, Sleep" << endl;
+		cin >> playerInput;
+		cout << "\n\n";
+
+		if (playerInput == "stand" || playerInput == "Stand") {
+			standUp();
+		}
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "keys" || playerInput == "Keys") {
+			getKeys();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
+		}
+	}
+	if (isStanding == true) {
+		if (hasKeys == false) {
+			cout << "Don't you think you should take your keys with you?" << endl;
+			cout << "\n\n\n";
+			cout << "Actions: Keys, Sleep" << endl;
+
+			if (playerInput == "sleep" || playerInput == "Sleep") {
+				goSleep();
+			}
+			if (playerInput == "keys" || playerInput == "Keys") {
+				getKeys();
+			}
+		}
+		if (hasKeys == true) {
+			cout << "You walk right out the door." << endl;
+			cout << "THE SPOOKY DOOR!" << endl;
+			system("Pause");
+		}
+	}
+}
+
 void lookAround() {
+	hasLook = true;
 	cout << "\n\n\n";
 	cout << "You look at the furniture that surrounds you." << endl;
 	cout << "There are keys on the table. They look like yours." << endl;
 	cout << "The front door is up ahead." << endl;
-	
+	cout << "\n\n\n";
+
 	if (isStanding == true) {
-		cout << "Actions: "
+		cout << "Actions: Door, Keys, Sleep" << endl;
+		cin >> playerInput;
+		
+		if (playerInput == "keys" || playerInput == "Keys") {
+			getKeys();
+		}
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
+		}
 	}
 
 	if (isStanding == false) {
 		cout << "Actions: Door, Keys, Stand, Sleep" << endl;
+		cin >> playerInput;
+		
+		if (playerInput == "keys" || playerInput == "Keys") {
+			getKeys();
+		}
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
+		}
+		if (playerInput == "stand" || playerInput == "Stand") {
+			standUp();
+		}
 	}
 }
 
@@ -68,7 +173,7 @@ void standUp() {
 	cout << "Stretching out your legs, you slowly rise to your feet." << endl;
 	cout << "You may have done so too quickly, you feel a little dizzy." << endl;
 	cout << "The sensation quickly passes." << endl;
-	cout << "\n\n";
+	cout << "\n\n\n";
 
 	if (hasLook == false) {
 		cout << "Actions: Look, Sleep" << endl;
@@ -86,15 +191,21 @@ void standUp() {
 	if (hasLook == true) {
 		cout << "Actions: Keys, Door, Sleep" << endl;
 		cin >> playerInput;
-		if (playerInput == ) {
-
+		if (playerInput == "keys" || playerInput == "Keys") {
+			getKeys();
+		}
+		if (playerInput == "door" || playerInput == "Door") {
+			getDoor();
+		}
+		if (playerInput == "sleep" || playerInput == "Sleep") {
+			goSleep();
 		}
 	}
 }
 
 void beginning() {
 	//startRoom = true;
-	cout << "You wake up in what seems to be a regular old house." << endl;
+	cout << "You wake up on the floor of what seems to be a regular old house." << endl;
 	cout << "But it isn't your house...\n\n" << endl;
 	system("Pause");
 
@@ -108,7 +219,6 @@ void beginning() {
 		standUp();
 	}
 	if (playerInput == "look" || playerInput == "Look") {
-		hasLook = true;
 		lookAround();
 	}
 	if (playerInput == "sleep" || playerInput == "Sleep") {
