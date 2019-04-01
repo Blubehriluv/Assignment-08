@@ -87,7 +87,7 @@ void getKeys() {
 			goSleep();
 		}
 		else {
-			cout << "u suc" << endl;
+			dead();
 		}
 	}
 }
