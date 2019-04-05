@@ -21,6 +21,27 @@ void getKeys();
 void getDoor();
 void standUp();
 
+void winnable()
+{
+	cout << "But that doesn't matter cause you already left." << endl;
+	cout << "You escaped!" << endl;
+	system("Pause");
+	cout << "\n\n\n";
+	cout << "Thanks for playing my game!" << endl;
+	cout << "Would you like to play again? [y/n]" << endl;
+
+	cin >> playerInput;
+
+	if (playerInput == "y" || playerInput == "Y" || playerInput == "yes" || playerInput == "Yes") {
+		cout << "\n\n\n";
+		beginning();
+	}
+	if (playerInput == "n" || playerInput == "N" || playerInput == "no" || playerInput == "No") {
+		return;
+	}
+
+	beginning();
+}
 
 void dead() {
 	system("Color 0C");
@@ -127,9 +148,25 @@ void getDoor() {
 			}
 		}
 		if (hasKeys == true) {
-			cout << "You walk right out the door." << endl;
-			cout << "THE SPOOKY DOOR!" << endl;
+			cout << "You approach the door and reach for the handle..." << endl;
+			cout << "Turning it slowly, you open the barrier and step through into sunlight." << endl;
 			system("Pause");
+			cout << "But then a voice behind you squeals," << endl;
+			system("Color 0C");
+			string hello = "D O N ' T    L E A V E . . .";
+			int x = 0;
+			while (hello[x] != '\0')
+			{
+				cout << hello[x];
+				Sleep(500);
+				x++;
+			};
+			cout << "\n\n\n";
+			system("Pause");
+			cout << "\n\n\n";
+			system("Color 0F");
+
+			winnable();
 		}
 	}
 }
