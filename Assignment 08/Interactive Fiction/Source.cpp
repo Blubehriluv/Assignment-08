@@ -21,6 +21,7 @@ void getKeys();
 void getDoor();
 void standUp();
 
+//FUNCTION FOR WINNING THE GAME
 void winnable()
 {
 	cout << "But that doesn't matter cause you already left." << endl;
@@ -32,6 +33,7 @@ void winnable()
 
 	cin >> playerInput;
 
+	//WILL THE PLAYER PLAY THE GAME AGAIN
 	if (playerInput == "y" || playerInput == "Y" || playerInput == "yes" || playerInput == "Yes") {
 		cout << "\n\n\n";
 		beginning();
@@ -43,6 +45,7 @@ void winnable()
 	beginning();
 }
 
+//FUNCTION FOR THE PLAYER DYING
 void dead() {
 	system("Color 0C");
 	string deadboi = "You died.";
@@ -50,14 +53,16 @@ void dead() {
 	while (deadboi[x] != '\0')
 	{
 		cout << deadboi[x];
-		Sleep(500);
+		Sleep(150);
 		x++;
 	};
 	system("Color 0F");
 
+	//FUNCTIONS ARE NOW RESET
 	startRoom = false;
 	hallway = false;
 	hasLook = false;
+	isStanding = false;
 	system("Pause");
 	cout << "\n\n\n";
 	system("Color 0F");
@@ -76,7 +81,9 @@ void dead() {
 	beginning();
 }
 
+//FUNCTION FOR THE PLAYER GOING TO SLEEP
 void goSleep() {
+	cout << "\n\n";
 	cout << "You lay in the fetal position until you drift off into slumber." << endl;
 	cout << "If you don't know where you are, why would you sleep?" << endl;
 	system("Pause");
@@ -84,7 +91,9 @@ void goSleep() {
 	dead();
 }
 
+//FUNCTION FOR THE PLAYER OBTAINING THE KEYS
 void getKeys() {
+	//IF THE PLAYER ISN'T STANDING UP YET
 	if (isStanding == false) {
 		cout << "You may want to get up off the floor first." << endl;
 		cout << "\n\n\n";
@@ -106,6 +115,7 @@ void getKeys() {
 			dead();
 		}
 	}
+	//IF THE PLAYER IS ALREADY STANDING
 	if (isStanding == true) {
 		hasKeys = true;
 		cout << "You take the keys, shoving them into your coat pocket." << endl;
@@ -126,6 +136,7 @@ void getKeys() {
 	}
 }
 
+//FUNCTION FOR THE PLAYER GOING THROUGH THE DOOR
 void getDoor() {
 	if (isStanding == false) {
 		cout << "You should get up off the floor." << endl;
@@ -151,7 +162,9 @@ void getDoor() {
 			dead();
 		}
 	}
+	//THE PLAYER HAS TO BE STANDING AND HAVE THE KEYS TO USE THE DOOR
 	if (isStanding == true) {
+		//PLAYER DOES NOT HAVE THE KEYS
 		if (hasKeys == false) {
 			cout << "Don't you think you should take your keys with you?" << endl;
 			cout << "\n\n\n";
@@ -168,6 +181,7 @@ void getDoor() {
 				dead();
 			}
 		}
+		//PLAYER HAS THE KEYS
 		if (hasKeys == true) {
 			cout << "You approach the door and reach for the handle..." << endl;
 			cout << "Turning it slowly, you open the barrier and step through into sunlight." << endl;
@@ -179,7 +193,7 @@ void getDoor() {
 			while (spooky[x] != '\0')
 			{
 				cout << spooky[x];
-				Sleep(500);
+				Sleep(150);
 				x++;
 			};
 			cout << "\n\n\n";
@@ -192,6 +206,7 @@ void getDoor() {
 	}
 }
 
+//FUNCTION THAT ALLOWS THE PLAYER TO LOOK AROUND
 void lookAround() {
 	hasLook = true;
 	cout << "\n\n\n";
@@ -200,6 +215,7 @@ void lookAround() {
 	cout << "The front door is up ahead." << endl;
 	cout << "\n\n\n";
 
+	//THE PLAYER OPTIONS IF THEY HAD ALREADY STOOD UP
 	if (isStanding == true) {
 		cout << "Actions: Door, Keys, Sleep" << endl;
 		cin >> playerInput;
@@ -219,6 +235,7 @@ void lookAround() {
 		}
 	}
 
+	//THE PLAYER OPTIONS IF THE PLAYER ISN'T STANDING YET
 	if (isStanding == false) {
 		cout << "Actions: Door, Keys, Stand, Sleep" << endl;
 		cin >> playerInput;
@@ -242,6 +259,7 @@ void lookAround() {
 	}
 }
 
+//FUNCTION THAT ALLOWS THE PLAYER TO STAND UP
 void standUp() {
 	isStanding = true;
 	cout << "Stretching out your legs, you slowly rise to your feet." << endl;
@@ -249,6 +267,7 @@ void standUp() {
 	cout << "The sensation quickly passes." << endl;
 	cout << "\n\n\n";
 
+	//WHAT THE PLAYER SEES IF THEY HAVEN'T LOOKED AROUND YET
 	if (hasLook == false) {
 		cout << "Actions: Look, Sleep" << endl;
 		cin >> playerInput;
@@ -265,7 +284,7 @@ void standUp() {
 			dead();
 		}
 	}
-
+	//WHAT THE PLAYER SEES IF THEY HAVE ALREADY LOOKED AROUND
 	if (hasLook == true) {
 		cout << "Actions: Keys, Door, Sleep" << endl;
 		cin >> playerInput;
@@ -285,6 +304,7 @@ void standUp() {
 	}
 }
 
+//THE BEGINNING OF THE STORY
 void beginning() {
 	//startRoom = true;
 	cout << "You wake up on the floor of what seems to be a regular old house." << endl;
@@ -312,12 +332,14 @@ void beginning() {
 	}
 }
 
+//TAKING THE PLAYER'S NAME
 void enterName() {
 	cout << "what is the name of your character?" << endl;
 	cin >> playerName;
 	cout << "\n\n\n";
 }
 
+//INITIALIZING THE PLAYER'S GAME
 int main()
 {
 	cout << "Welcome to the 'Recollection' Text Adventure!" << endl;
@@ -333,7 +355,7 @@ int main()
 	while (hello[x] != '\0')
 	{
 		cout << hello[x];
-		Sleep(700);
+		Sleep(150);
 		x++;
 	};
 	cout << "\n\n\n";
