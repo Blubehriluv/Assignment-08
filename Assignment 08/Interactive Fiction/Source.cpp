@@ -45,7 +45,16 @@ void winnable()
 
 void dead() {
 	system("Color 0C");
-	cout << "You died" << endl;
+	string deadboi = "You died.";
+	int x = 0;
+	while (deadboi[x] != '\0')
+	{
+		cout << deadboi[x];
+		Sleep(500);
+		x++;
+	};
+	system("Color 0F");
+
 	startRoom = false;
 	hallway = false;
 	hasLook = false;
@@ -92,6 +101,10 @@ void getKeys() {
 		if (playerInput == "sleep" || playerInput == "Sleep") {
 			goSleep();
 		}
+		else
+		{
+			dead();
+		}
 	}
 	if (isStanding == true) {
 		hasKeys = true;
@@ -133,6 +146,10 @@ void getDoor() {
 		if (playerInput == "sleep" || playerInput == "Sleep") {
 			goSleep();
 		}
+		else
+		{
+			dead();
+		}
 	}
 	if (isStanding == true) {
 		if (hasKeys == false) {
@@ -146,6 +163,10 @@ void getDoor() {
 			if (playerInput == "keys" || playerInput == "Keys") {
 				getKeys();
 			}
+			else
+			{
+				dead();
+			}
 		}
 		if (hasKeys == true) {
 			cout << "You approach the door and reach for the handle..." << endl;
@@ -153,11 +174,11 @@ void getDoor() {
 			system("Pause");
 			cout << "But then a voice behind you squeals," << endl;
 			system("Color 0C");
-			string hello = "D O N ' T    L E A V E . . .";
+			string spooky = "D O N ' T    L E A V E . . .";
 			int x = 0;
-			while (hello[x] != '\0')
+			while (spooky[x] != '\0')
 			{
-				cout << hello[x];
+				cout << spooky[x];
 				Sleep(500);
 				x++;
 			};
@@ -268,6 +289,10 @@ void beginning() {
 	}
 	if (playerInput == "sleep" || playerInput == "Sleep") {
 		goSleep();
+	}
+	else
+	{
+		dead();
 	}
 }
 
