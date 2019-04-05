@@ -213,6 +213,10 @@ void lookAround() {
 		if (playerInput == "sleep" || playerInput == "Sleep") {
 			goSleep();
 		}
+		else
+		{
+			dead();
+		}
 	}
 
 	if (isStanding == false) {
@@ -230,6 +234,10 @@ void lookAround() {
 		}
 		if (playerInput == "stand" || playerInput == "Stand") {
 			standUp();
+		}
+		else
+		{
+			dead();
 		}
 	}
 }
@@ -252,6 +260,10 @@ void standUp() {
 			cout << "\n\n\n";
 			goSleep();
 		}
+		else
+		{
+			dead();
+		}
 	}
 
 	if (hasLook == true) {
@@ -265,6 +277,10 @@ void standUp() {
 		}
 		if (playerInput == "sleep" || playerInput == "Sleep") {
 			goSleep();
+		}
+		else
+		{
+			dead();
 		}
 	}
 }
